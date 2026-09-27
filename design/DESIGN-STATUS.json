@@ -1,0 +1,45 @@
+{
+  "game": "walker-2d-dodge-the-creeps",
+  "mode": "recovered",
+  "revision": 1,
+  "design_version": "0.1.0-recovered",
+  "date": "2026-09-27",
+  "recovered_from": {
+    "path": "walker-2d-dodge-the-creeps/godot",
+    "engine_detected": "Godot 4.7 (project.godot config/features)",
+    "pass": "/gdd reverse --path godot silent"
+  },
+  "engine": {
+    "name": "godot",
+    "version": "4.7 (features); 4.7.2 per logs",
+    "renderer": "gl_compatibility"
+  },
+  "gates": {
+    "vision": {
+      "signed_by": null,
+      "date": null,
+      "revision": null
+    },
+    "systems": {
+      "signed_by": null,
+      "date": null,
+      "revision": null
+    },
+    "world": {
+      "signed_by": null,
+      "date": null,
+      "revision": null
+    },
+    "scope": {
+      "signed_by": null,
+      "date": null,
+      "revision": null
+    }
+  },
+  "edu_track": false,
+  "human_playtests": 0,
+  "classification": "game (small, complete, upstream tutorial)",
+  "core_percentage": null,
+  "open_questions": 7,
+  "notes": "Silent recovered pass. Gate \u2014 unsigned at time of writing. Nothing here is approved; gates are signed by humans only."
+}

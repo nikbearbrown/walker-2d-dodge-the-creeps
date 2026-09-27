@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" role="img" aria-labelledby="t d">
+<title id="t">Session state flow: walker-2d-dodge-the-creeps</title>
+<desc id="d">Title → Get Ready → Playing → Game Over → Title, recovered from main.gd and hud.gd; there is no state enum, states are implied by timers and visibility. Dashed: proposed high-score persistence. M-04, M-05, M-06, S-01, S-02.</desc>
+<rect width="1400" height="560" fill="#faf9f5"/>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#25354a"/></marker></defs>
+<g font-family="Helvetica, Arial, sans-serif" fill="#25354a">
+<text x="40" y="50" font-size="30" font-weight="700">Session states · S-01, S-02</text>
+<text x="40" y="78" font-size="15" fill="#5b6b7c">solid = observed (implied by timers and visibility; no enum in code) · dashed = proposed</text>
+<g stroke="#25354a" stroke-width="2.5" fill="#fffdf7">
+<ellipse cx="170" cy="260" rx="120" ry="50"/><ellipse cx="520" cy="260" rx="120" ry="50"/><ellipse cx="870" cy="260" rx="120" ry="50"/><ellipse cx="1220" cy="260" rx="130" ry="50"/>
+</g>
+<g font-size="20" font-weight="700" text-anchor="middle"><text x="170" y="267">TITLE</text><text x="520" y="267">GET READY</text><text x="870" y="267">PLAYING</text><text x="1220" y="267">GAME OVER</text></g>
+<g stroke="#25354a" stroke-width="2" fill="none" marker-end="url(#a)">
+<path d="M290 260 H395"/><path d="M640 260 H745"/><path d="M990 260 H1085"/><path d="M1220 310 Q700 480 180 312"/>
+</g>
+<g font-size="13" fill="#5b6b7c">
+<text x="292" y="240">Start / Enter / Space</text><text x="300" y="300">new_game()</text>
+<text x="650" y="240">StartTimer 2 s</text><text x="650" y="300">Mob+Score timers start</text>
+<text x="1000" y="240">body_entered → hit</text><text x="1000" y="300">game_over()</text>
+<text x="560" y="455">"Game Over" → "Dodge the Creeps" → 1 s → Start button (hud.gd:11-17)</text>
+</g>
+<rect x="1090" y="360" width="260" height="60" rx="8" fill="none" stroke="#d24e42" stroke-width="2.5" stroke-dasharray="10 7"/>
+<text x="1220" y="396" font-size="15" text-anchor="middle" fill="#d24e42">save high score: proposed · Q-06</text>
+</g>
+</svg>

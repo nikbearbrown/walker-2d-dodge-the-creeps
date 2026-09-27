@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Dodge the Creeps GDD deck</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- /gdd deck (via /gdd reverse, silent) · gate — unsigned at time of writing -->
+<style>
+:root{--bg:#faf9f5;--ink:#25354a;--muted:#5b6b7c;--teal:#287c68;--red:#d24e42;--card:#fffdf7;--rule:#daddd6}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Helvetica,Arial,sans-serif}
+.slide{display:none;min-height:100vh;box-sizing:border-box;padding:56px 72px;max-width:1400px;margin:0 auto}
+.slide.on{display:block}
+h1{font-size:44px;margin:0 0 8px}h2{font-size:34px;margin:0 0 14px}
+.kicker{color:var(--muted);font-size:16px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
+p,li{font-size:22px;line-height:1.4}li{margin:8px 0}
+.cap{color:var(--muted);font-size:15px;margin-top:6px}
+img,object{max-width:100%;max-height:62vh;border:1px solid var(--rule);background:#fff}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:14px;font-weight:700;margin-right:6px}
+.obs{background:#e3f1ec;color:var(--teal)}.miss{background:#fdece9;color:var(--red)}.inf{background:#eef1f4;color:var(--muted)}
+.prop{border:2px dashed var(--red);padding:10px 14px;border-radius:6px}
+table{border-collapse:collapse;font-size:18px;width:100%}td,th{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+.zelda{border-left:6px solid var(--red);padding-left:18px}
+nav{position:fixed;bottom:14px;right:22px;color:var(--muted);font-size:14px}
+@media(max-width:800px){.slide{padding:24px 16px}h1{font-size:30px}h2{font-size:24px}p,li{font-size:17px}}
+</style></head><body>
+<section class="slide">
+<div class="kicker">walker-2d-dodge-the-creeps · recovered GDD 0.1.0 · 2026-09-27 · Zelda, silent · gate unsigned at time of writing</div>
+<h1>Move. Don't get touched.</h1><p>Godot's "Your first 2D game", retitled for Walker. A <b>small, complete game</b>: survive, score by time, one hit ends the run.</p><p><span class="tag obs">OBSERVED</span> <span class="tag inf">INFERRED</span> <span class="tag miss">MISSING</span></p><p class='cap'>No gate signed. No human playtest. → <a href='../GDD.md'>GDD.md</a></p>
+</section>
+<section class="slide">
+<div class="kicker">What exists · upstream art</div>
+<img src='../godot/screenshots/dodge.png' alt='Dodge the Creeps'><p class='cap'>Upstream screenshot, 480×720 portrait (godot/README.md:25). Design art, not a Walker capture. Portrait is the native layout.</p>
+</section>
+<section class="slide">
+<div class="kicker">Core loop · §3</div>
+<object data='diagrams/core-loop.svg' type='image/svg+xml'></object>
+</section>
+<section class="slide">
+<div class="kicker">Session · §3</div>
+<object data='diagrams/session-state.svg' type='image/svg+xml'></object>
+</section>
+<section class="slide">
+<div class="kicker">Walker's fix · §5 M-02</div>
+<h2>Down, then right, kept the sprite upside down</h2><p><span class="tag obs">OBSERVED</span> The repro log FAILed "horizontal movement resets orientation". player.gd:34 now resets rotation. The fixed log passes 14/14.</p><p class='cap'>input-repro-20260924.log → input-fixed-20260924.log</p>
+</section>
+<section class="slide">
+<div class="kicker">Tuning · §5 (observed, not approved)</div>
+<table><tr><th>Value</th><th>Source</th></tr><tr><td>Player 400 px/s</td><td>player.gd:5</td></tr><tr><td>Spawn every 0.5 s</td><td>main.tscn:31</td></tr><tr><td>Creep 150–250 px/s</td><td>main.gd:43</td></tr><tr><td>Grace 2 s</td><td>main.tscn:36</td></tr></table>
+</section>
+<section class="slide">
+<div class="kicker">Risks · §14</div>
+<ol><li>Landscape film misrepresents a portrait game</li><li>Collision proof uses a fixture, not natural play</li><li>CC-BY music attribution must travel with any film</li></ol>
+</section>
+<section class="slide">
+<div class="kicker">Open questions</div>
+<div class='prop'><p><b>Q-01</b> Keep as tutorial game, or extend?</p><p><b>Q-02</b> Player fantasy?</p><p><b>Q-05</b> Difficulty ramp?</p><p>Q-03, Q-04, Q-06, Q-07 in decisions.md</p></div>
+</section>
+<section class="slide">
+<div class="kicker">Zelda's read</div>
+<div class='zelda'><p>One verb, one rule, one number. It's a real game. Flat difficulty is the design debt. The rotation fix is the story, because it has a before and an after.</p></div>
+</section>
+<nav><span id="n"></span> · arrows / space</nav>
+<script>
+const s=[...document.querySelectorAll('.slide')];let i=0;const n=document.getElementById('n');
+function go(k){s[i].classList.remove('on');i=Math.max(0,Math.min(s.length-1,k));s[i].classList.add('on');n.textContent=(i+1)+' / '+s.length;}
+document.addEventListener('keydown',e=>{if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();go(i+1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(i-1)}if(e.key==='Home')go(0);if(e.key==='End')go(s.length-1);});
+document.addEventListener('click',e=>{if(e.target.closest('a'))return;go(e.clientX>innerWidth/2?i+1:i-1)});
+go(0);
+</script>
+</body></html>

@@ -1,0 +1,17 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS initial player hidden
+PASS start resets player score and music state
+PASS downward orientation
+FAIL horizontal movement resets orientation
+PASS diagonal motion normalized near 400px/s
+PASS left boundary clamps
+PASS timer spawns mobs
+PASS timed score updates label
+PASS physics collision hides/disables player
+PASS collision stops gameplay timers
+PASS game over stops music state
+PASS restart offered after messages
+PASS restart restores player and score
+PASS restart clears mobs
+RESULT failures=1; headless state and collision fixture, not footage
